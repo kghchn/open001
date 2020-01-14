@@ -7,7 +7,7 @@
          VALUES ('/test/test.txt', 1, 1,NOW(),NOW());
      </insert>-->
 
-    <insert id="addFilePath" parameterType="FilePath">
+    <insert id="addFilePath" parameterType="com.hubery.entity.FilePath">
         INSERT INTO t_file_path (path,fileType,fileStatus,creationTime,updateTime)
         VALUES (#{path}, #{fileType}, #{fileStatus},NOW(),NOW());
     </insert>

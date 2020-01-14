@@ -22,9 +22,9 @@ public class FilePathServiceImpl implements FilePathService {
         this.filePathMapper = filePathMapper;
     }
 
+    @Override
     public Integer addFilePath(FilePath filePath) {
         Integer integer = filePathMapper.addFilePath(filePath);
-
         return integer;
     }
 

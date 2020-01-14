@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hubery.dao.NewsCenterMapper">
 
-    <insert id="addNewsCenter" parameterType="NewsCenter">
+    <insert id="addNewsCenter" parameterType="com.hubery.entity.NewsCenter">
         INSERT INTO t_news_center (title, content, ncType,filePath,ncStatus,creationTime,updateTime)
         VALUES (#{title}, #{content},#{ncType}, #{filePathString},1,NOW(),NOW());
     </insert>
 
-    <update id="updNewsCenter" parameterType="NewsCenter">
+    <update id="updNewsCenter" parameterType="com.hubery.entity.NewsCenter">
         UPDATE t_news_center SET updateTime = NOW()
 
         <if test="title != null and title != ''">

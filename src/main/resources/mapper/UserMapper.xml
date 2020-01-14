@@ -6,7 +6,7 @@
         FROM t_admin
         WHERE id = 1
     </select>
-    <select id="selUserByNameAndPassword" parameterType="User" resultType="com.hubery.entity.User">
+    <select id="selUserByNameAndPassword" parameterType="com.hubery.entity.User" resultType="com.hubery.entity.User">
         SELECT id,name  FROM t_user
         WHERE name = #{name}  AND password = #{password}
     </select>

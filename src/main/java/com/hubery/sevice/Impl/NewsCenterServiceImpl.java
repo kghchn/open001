@@ -23,13 +23,16 @@ public class NewsCenterServiceImpl implements NewsCenterService {
         this.newsCenterMapper = newsCenterMapper;
     }
 
+    @Override
     public Integer addNewsCenter(NewsCenter newsCenter) {
         Integer i = newsCenterMapper.addNewsCenter(newsCenter);
         return i;
     }
 
+    @Override
     public Integer updNewsCenter(NewsCenter newsCenter) {
         Integer i = newsCenterMapper.updNewsCenter(newsCenter);
         return i;
     }
+
 }
