@@ -22,7 +22,7 @@ public class ResultUtil {
         return resulMsg;
     }
     public static ResulMsg success(String msgString ){
-        return success(msgString,"成功");
+        return success(msgString,null);
     }
 
     /**
