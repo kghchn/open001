@@ -3,9 +3,9 @@ package com.hubery.controller;
 
 import com.hubery.entity.ResulMsg;
 import com.hubery.entity.NewsCenter;
-import com.hubery.sevice.FilePathService;
-import com.hubery.sevice.NewsCenterService;
-import com.hubery.sevice.UserService;
+import com.hubery.sevice.Impl.FilePathServiceImpl;
+import com.hubery.sevice.Impl.NewsCenterServiceImpl;
+import com.hubery.sevice.Impl.UserServiceImpl;
 import com.hubery.utils.ResultUtil;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +25,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/edit")
 public class EditController {
 
-    private final UserService userService;
-    private final FilePathService filePathService;
-    private final NewsCenterService newsCenterService;
+    private final UserServiceImpl userServiceImpl;
+    private final FilePathServiceImpl filePathServiceImpl;
+    private final NewsCenterServiceImpl newsCenterServiceImpl;
 
     @Autowired
-    public EditController(UserService userService, FilePathService filePathService, NewsCenterService newsCenterService) {
-        this.userService = userService;
-        this.filePathService = filePathService;
-        this.newsCenterService = newsCenterService;
+    public EditController(UserServiceImpl userServiceImpl, FilePathServiceImpl filePathServiceImpl, NewsCenterServiceImpl newsCenterServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
+        this.filePathServiceImpl = filePathServiceImpl;
+        this.newsCenterServiceImpl = newsCenterServiceImpl;
     }
 
     @ResponseBody
@@ -47,7 +47,7 @@ public class EditController {
         newsCenter.setNcType(1);
         newsCenter.setFilePathString("11");
         /*Integer returnNewsCenter = newsCenterService.addNewsCenter(newsCenter);*/
-        Integer integer = newsCenterService.updNewsCenter(newsCenter);
+        Integer integer = newsCenterServiceImpl.updNewsCenter(newsCenter);
         System.err.println(integer.toString());
         return ResultUtil.success("请求成功");
     }

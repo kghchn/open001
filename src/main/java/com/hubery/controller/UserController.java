@@ -3,8 +3,8 @@ package com.hubery.controller;
 import com.hubery.entity.FilePath;
 import com.hubery.entity.ResulMsg;
 import com.hubery.entity.User;
-import com.hubery.sevice.FilePathService;
-import com.hubery.sevice.UserService;
+import com.hubery.sevice.Impl.FilePathServiceImpl;
+import com.hubery.sevice.Impl.UserServiceImpl;
 import com.hubery.utils.ResultUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,20 +22,20 @@ import org.springframework.web.bind.annotation.*;
 @Api("请求方法")
 public class UserController {
 
-    private final UserService userService;
-    private final FilePathService filePathService;
+    private final UserServiceImpl userServiceImpl;
+    private final FilePathServiceImpl filePathServiceImpl;
 
     @Autowired
-    public UserController(UserService userService, FilePathService filePathService) {
-        this.userService = userService;
-        this.filePathService = filePathService;
+    public UserController(UserServiceImpl userServiceImpl, FilePathServiceImpl filePathServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
+        this.filePathServiceImpl = filePathServiceImpl;
     }
 
     @ResponseBody
     @PostMapping(value = "/login")
     @ApiOperation(value = "接口管理", httpMethod = "POST")
     public ResulMsg login(@RequestBody User user) {
-        User loginUser = userService.login(user);
+        User loginUser = userServiceImpl.login(user);
         String test = "PostMapping :" + loginUser;
         /** System.err.println(test);*/
 
