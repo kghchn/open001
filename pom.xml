@@ -5,15 +5,15 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.7.RELEASE</version>
+        <version>2.2.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com</groupId>
     <artifactId>hubery</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
-    <name>Open01</name>
-    <description>Open01</description>
+    <name>OpenSource01</name>
+    <description>OpenSource01</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
