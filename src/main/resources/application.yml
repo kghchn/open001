@@ -17,8 +17,7 @@ spring:
       filters: stat
       driver-class-name: com.mysql.cj.jdbc.Driver
       #基本属性
-      #jdbc:mysql://127.0.0.1:3306/hubery?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-      url: jdbc:mysql://192.168.0.103:3306/happy2jia1?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=GMT%2B8 #jdbc:mysql://127.0.0.1:3306/hubery?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      jdbc:mysql://127.0.0.1:3306/hubery?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
       username: test #hubery
       password: test #hubery
       #配置初始化大小/最小/最大
