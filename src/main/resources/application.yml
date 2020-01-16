@@ -1,10 +1,17 @@
 server:
   port: 8090 #端口号
+  address: 0.0.0.0
   tomcat:
+    uri-encoding: UTF-8
     min-spare-threads: 20
     max-threads: 100
     connection-timeout: 5000
 spring:
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enable: true
   mvc:
     #静态资源spring.mvc.static-path-pattern=/static/**
     static-path-pattern: /static/**
@@ -17,9 +24,11 @@ spring:
       filters: stat
       driver-class-name: com.mysql.cj.jdbc.Driver
       #基本属性
-      jdbc:mysql://127.0.0.1:3306/hubery?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-      username: test #hubery
-      password: test #hubery
+      #jdbc:mysql://127.0.0.1:3306/hubery?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      url: jdbc:mysql://192.168.0.103:3306/happy2jia1?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=GMT%2B8
+      #jdbc:mysql://127.0.0.1:3306/hubery?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      username: hubery #hubery
+      password: hubery #hubery
       #配置初始化大小/最小/最大
       initial-size: 1
       min-idle: 1
