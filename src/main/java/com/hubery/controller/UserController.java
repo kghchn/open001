@@ -1,11 +1,10 @@
 package com.hubery.controller;
 
-import com.hubery.entity.FilePath;
+import com.hubery.common.ResultUtil;
 import com.hubery.entity.ResulMsg;
 import com.hubery.entity.User;
 import com.hubery.sevice.Impl.FilePathServiceImpl;
 import com.hubery.sevice.Impl.UserServiceImpl;
-import com.hubery.common.ResultUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,18 +34,19 @@ public class UserController {
     @PostMapping(value = "/login")
     @ApiOperation(value = "接口管理", httpMethod = "POST")
     public ResulMsg login(@RequestBody User user) {
-        User loginUser = userServiceImpl.login(user);
-        String test = "PostMapping :" + loginUser;
+//        User loginUser = userServiceImpl.login(user);
+        String test = "PostMapping :" + user;
+        System.err.println(test);
         /** System.err.println(test);*/
 
         /** FilePath add  */
-        FilePath filePath = new FilePath();
-        filePath.setPath("/home/data/xy/2019/07/test.mp4");
-        filePath.setFileType(2);
-        filePath.setFileStatus(1);
+//        FilePath filePath = new FilePath();
+//        filePath.setPath("/home/data/xy/2019/07/test.mp4");
+//        filePath.setFileType(2);
+//        filePath.setFileStatus(1);
         /* Integer integer = filePathService.addFilePath(filePath);*/
         /*System.err.println("integer:"+integer);*/
-        return ResultUtil.success("请求成功",loginUser);
+        return ResultUtil.success("请求成功",user);
     }
 
     @ResponseBody
@@ -56,7 +56,7 @@ public class UserController {
     public ResulMsg test(String name) {
         String test = "GetMapping : " + name;
         System.err.println(test);
-        return ResultUtil.success("请求成功",test);
+        return ResultUtil.success("请求成功...",test);
     }
 
 

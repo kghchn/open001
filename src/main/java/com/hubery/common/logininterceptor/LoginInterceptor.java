@@ -25,13 +25,11 @@ public class LoginInterceptor implements HandlerInterceptor {
                              HttpServletResponse response, Object handler) throws Exception {
         User user = (User) request.getSession().getAttribute(GlobalConst.USER_SESSION_KEY);
         logger.info(request.getRequestURI());
-        /**
-         if (user == null || user.equals(""))  {
+        /* if (user == null || user.equals(""))  {
          response.sendRedirect("/login");
          logger.info("请先登录");
          return false;
-         }
-         */
+         }*/
         return true;
     }
 
