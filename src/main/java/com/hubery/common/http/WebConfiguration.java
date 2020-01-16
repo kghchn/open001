@@ -1,4 +1,4 @@
-package com.hubery.utils.http;
+package com.hubery.common.http;
 
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration;

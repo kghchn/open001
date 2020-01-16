@@ -1,4 +1,4 @@
-package com.hubery.utils;
+package com.hubery.common;
 
 import com.hubery.entity.ResulMsg;
 

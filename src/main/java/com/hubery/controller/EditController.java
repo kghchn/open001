@@ -5,7 +5,7 @@ import com.hubery.entity.NewsCenter;
 import com.hubery.sevice.FilePathService;
 import com.hubery.sevice.NewsCenterService;
 import com.hubery.sevice.UserService;
-import com.hubery.utils.ResultUtil;
+import com.hubery.common.ResultUtil;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

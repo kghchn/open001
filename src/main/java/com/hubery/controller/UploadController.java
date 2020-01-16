@@ -1,7 +1,7 @@
 package com.hubery.controller;
 
 import com.hubery.entity.ResulMsg;
-import com.hubery.utils.ResultUtil;
+import com.hubery.common.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

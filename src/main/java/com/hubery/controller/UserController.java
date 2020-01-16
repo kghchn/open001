@@ -5,7 +5,7 @@ import com.hubery.entity.ResulMsg;
 import com.hubery.entity.User;
 import com.hubery.sevice.Impl.FilePathServiceImpl;
 import com.hubery.sevice.Impl.UserServiceImpl;
-import com.hubery.utils.ResultUtil;
+import com.hubery.common.ResultUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

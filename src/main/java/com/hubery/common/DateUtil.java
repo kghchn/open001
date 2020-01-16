@@ -1,4 +1,4 @@
-package com.hubery.utils;
+package com.hubery.common;
 
 import java.text.SimpleDateFormat;
 import java.sql.Timestamp;

@@ -1,7 +1,7 @@
 package com.hubery.controller;
 
 import com.hubery.entity.ResulMsg;
-import com.hubery.utils.ResultUtil;
+import com.hubery.common.ResultUtil;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

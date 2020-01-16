@@ -1,7 +1,7 @@
-package com.hubery.utils.logininterceptor;
+package com.hubery.common.logininterceptor;
 
 import com.hubery.entity.User;
-import com.hubery.utils.GlobalConst;
+import com.hubery.common.GlobalConst;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;

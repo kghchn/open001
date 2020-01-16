@@ -1,4 +1,4 @@
-package com.hubery.utils;
+package com.hubery.common;
 
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
