@@ -54,10 +54,10 @@ public class UserController {
     /** @RequestMapping(value = "/test",method= RequestMethod.GET)*/
     @ApiOperation(value = "接口管理", httpMethod = "GET")
     public ResulMsg test(String name) {
+//        sleep(2000);
         String test = "GetMapping : " + name;
         System.err.println(test);
         return ResultUtil.success("请求成功...",test);
     }
-
 
 }
