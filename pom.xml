@@ -54,6 +54,12 @@
             <version>3.4</version>
         </dependency>
 
+        <!--Actuator 监控 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
         <!-- 热部署模块 开始 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
