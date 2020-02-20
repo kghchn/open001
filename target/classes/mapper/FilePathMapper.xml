@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hubery.dao.FilePathMapper">
+
+    <!-- <insert id="addFilePath" parameterType="FilePath">
+         INSERT INTO t_file_path (path,fileType,fileStatus,creationTime,updateTime)
+         VALUES ('/test/test.txt', 1, 1,NOW(),NOW());
+     </insert>-->
+
+    <insert id="addFilePath" parameterType="com.hubery.entity.FilePath">
+        INSERT INTO t_file_path (path,fileType,fileStatus,creationTime,updateTime)
+        VALUES (#{path}, #{fileType}, #{fileStatus},NOW(),NOW());
+    </insert>
+
+</mapper>

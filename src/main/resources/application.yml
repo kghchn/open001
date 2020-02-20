@@ -1,5 +1,5 @@
 server:
-  port: 8090 #端口号
+  port: 8080 #端口号
 #  address: 127.0.0.1
   tomcat:
     uri-encoding: UTF-8
@@ -72,11 +72,11 @@ pagehelper:
 #静态资源spring.mvc.static-path-pattern=/static/**
 
 #接口管理工具配置
-swagger:
-  basic:
-    enable: true
-    username: hubery
-    password: hubery
+#swagger:
+#  basic:
+#    enable: true
+#    username: hubery
+#    password: hubery
 
 uploadFile:
   path: src/main/resources/static/file/
