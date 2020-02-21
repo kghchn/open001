@@ -41,7 +41,7 @@ spring:
     #静态资源spring.mvc.static-path-pattern=/static/**
     static-path-pattern: /static/**
   datasource:
-    name: happy2jia1 #hubery #数据库名称
+    name: hubery #hubery #数据库名称
     type: com.alibaba.druid.pool.DruidDataSource
     #druid相关配置
     druid:
