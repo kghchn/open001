@@ -1,11 +1,10 @@
 package com.hubery.sevice.Impl;
 
-import com.hubery.dao.UserMapper;
-import com.hubery.entity.User;
-import com.hubery.sevice.UserService;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
+import com.hubery.entity.User;
+import com.hubery.dao.UserMapper;
+import com.hubery.sevice.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -44,4 +43,5 @@ public class UserServiceImpl implements UserService {
     }
 
 }
+
 

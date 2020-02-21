@@ -1,7 +1,8 @@
 package com.hubery.sevice;
 
 import com.hubery.entity.User;
-public interface UserService{
+
+public interface UserService {
 
 
     int deleteByPrimaryKey(Long userId);
@@ -17,3 +18,5 @@ public interface UserService{
     int updateByPrimaryKey(User record);
 
 }
+
+
