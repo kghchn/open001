@@ -1,17 +1,74 @@
 package com.hubery.entity;
 
+import java.util.Date;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
-/**
- * @program hubery
- * @description: 用户信息
- * @author: kgh
- * @create: 2019/05/23 19:08
- */
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
-    private Integer userId;
+    /**
+     * 自增主键，系统内的用户ID
+     */
+    private Long userId;
+
     private String userName;
-    private String password;
+
+    private String userPassword;
+
+    /**
+     * 生日
+     */
+    private Date userBirthday;
+
+    /**
+     * 性别:0-保密,1-男,2-女
+     */
+    private Boolean userSex;
+
+    /**
+     * 身份证件类型：1中国大陆身份证，2护照
+     */
+    private Byte idType;
+
+    private String userIdNo;
+
+    private String userEmail;
+
+    private String userMobile;
+
+    /**
+     * 地址记录ID
+     */
+    private Long addressId;
+
+    private String miniOpenId;
+
+    private String miniUnionId;
+
+    private String miniNickName;
+
+    private String userProfilePhoto;
+
+    /**
+     * 最后登录时间
+     */
+    private Date lastLoginTime;
+
+    /**
+     * 用户状态， -1:删除,01:正常,02:冻结
+     */
+    private Byte userStatus;
+
+    /**
+     * 记录生成的时间
+     */
+    private Date createTime;
+
+    /**
+     * 记录最近修改的时间
+     */
+    private Date updateTime;
 }

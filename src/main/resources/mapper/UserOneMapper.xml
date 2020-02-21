@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hubery.dao.UserOneMapper">
+    <select id="test" resultType="String">
+        SELECT password
+        FROM user
+        WHERE id = 1
+    </select>
+    <select id="selUserByNameAndPassword" parameterType="com.hubery.entity.UserOne" resultType="com.hubery.entity.UserOne">
+        SELECT id,name  FROM user
+        WHERE name = #{name}  AND password = #{password}
+    </select>
+
+    <select id="selUserById" parameterType="com.hubery.entity.UserOne" resultType="com.hubery.entity.UserOne">
+        SELECT user_id,user_name  FROM user
+        WHERE user_id = #{userId}
+    </select>
+</mapper>

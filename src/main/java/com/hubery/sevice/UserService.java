@@ -1,8 +1,19 @@
 package com.hubery.sevice;
 
-import com.hubery.dao.UserMapper;
 import com.hubery.entity.User;
+public interface UserService{
 
-public interface UserService {
-    User login(User user);
+
+    int deleteByPrimaryKey(Long userId);
+
+    int insert(User record);
+
+    int insertSelective(User record);
+
+    User selectByPrimaryKey(Long userId);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
+
 }

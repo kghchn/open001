@@ -2,9 +2,9 @@ package com.hubery.controller;
 
 import com.hubery.common.ResultUtil;
 import com.hubery.entity.ResulMsg;
-import com.hubery.entity.User;
+import com.hubery.entity.UserOne;
 import com.hubery.sevice.Impl.FilePathServiceImpl;
-import com.hubery.sevice.Impl.UserServiceImpl;
+import com.hubery.sevice.Impl.UserOneServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +19,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Api("请求方法")
-public class UserController {
+public class UserOneController {
 
-    private final UserServiceImpl userServiceImpl;
+    private final UserOneServiceImpl userServiceImpl;
     private final FilePathServiceImpl filePathServiceImpl;
 
     @Autowired
-    public UserController(UserServiceImpl userServiceImpl, FilePathServiceImpl filePathServiceImpl) {
+    public UserOneController(UserOneServiceImpl userServiceImpl, FilePathServiceImpl filePathServiceImpl) {
         this.userServiceImpl = userServiceImpl;
         this.filePathServiceImpl = filePathServiceImpl;
     }
@@ -33,7 +33,7 @@ public class UserController {
     @ResponseBody
     @PostMapping(value = "/login")
     @ApiOperation(value = "接口管理", httpMethod = "POST")
-    public ResulMsg login(@RequestBody User user) {
+    public ResulMsg login(@RequestBody UserOne user) {
 //        User loginUser = userServiceImpl.login(user);
         String test = "PostMapping :" + user;
         System.err.println(test);
@@ -52,12 +52,13 @@ public class UserController {
     @ResponseBody
     @GetMapping(value = "/test")
     /** @RequestMapping(value = "/test",method= RequestMethod.GET)*/
-    @ApiOperation(value = "接口管理", httpMethod = "GET")
+//    @ApiOperation(value = "接口管理", httpMethod = "GET")
     public ResulMsg test(String name) {
 //        sleep(2000);
-        String test = "GetMapping : " + name;
+        String test = "Mapping : " + name;
         System.err.println(test);
         return ResultUtil.success("请求成功...",test);
+        //SqlSessionFactory
     }
 
 }

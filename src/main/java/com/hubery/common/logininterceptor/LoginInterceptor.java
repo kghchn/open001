@@ -1,6 +1,6 @@
 package com.hubery.common.logininterceptor;
 
-import com.hubery.entity.User;
+import com.hubery.entity.UserOne;
 import com.hubery.common.GlobalConst;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +23,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler) throws Exception {
-        User user = (User) request.getSession().getAttribute(GlobalConst.USER_SESSION_KEY);
+        UserOne user = (UserOne) request.getSession().getAttribute(GlobalConst.USER_SESSION_KEY);
         logger.info(request.getRequestURI());
         /* if (user == null || user.equals(""))  {
          response.sendRedirect("/login");

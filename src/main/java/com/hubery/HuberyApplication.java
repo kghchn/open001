@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @create: 2019/07/08 21:21
  */
 
+//@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @SpringBootApplication
 public class HuberyApplication {
     public static void main(String[] args) {

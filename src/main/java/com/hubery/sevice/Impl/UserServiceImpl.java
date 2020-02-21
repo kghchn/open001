@@ -3,27 +3,45 @@ package com.hubery.sevice.Impl;
 import com.hubery.dao.UserMapper;
 import com.hubery.entity.User;
 import com.hubery.sevice.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * @program hubery selUserByNameAndPassword
- * @description: 用户 user 业务层
- * @author: kgh
- * @create: 2019/07/22 14:17
- */
+import javax.annotation.Resource;
 
 @Service
 public class UserServiceImpl implements UserService {
-    private final UserMapper userMapper;
 
-    @Autowired
-    public UserServiceImpl(UserMapper userMapper) {
-        this.userMapper = userMapper;
+    @Resource
+    private UserMapper userMapper;
+
+    @Override
+    public int deleteByPrimaryKey(Long userId) {
+        return userMapper.deleteByPrimaryKey(userId);
     }
 
     @Override
-    public User login(User user) {
-        return userMapper.selUserByNameAndPassword(user);
+    public int insert(User record) {
+        return userMapper.insert(record);
     }
+
+    @Override
+    public int insertSelective(User record) {
+        return userMapper.insertSelective(record);
+    }
+
+    @Override
+    public User selectByPrimaryKey(Long userId) {
+        return userMapper.selectByPrimaryKey(userId);
+    }
+
+    @Override
+    public int updateByPrimaryKeySelective(User record) {
+        return userMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public int updateByPrimaryKey(User record) {
+        return userMapper.updateByPrimaryKey(record);
+    }
+
 }
+

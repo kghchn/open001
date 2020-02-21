@@ -1,7 +1,6 @@
 package com.hubery.sevice.Impl;
 
 import com.hubery.dao.NewsCenterMapper;
-import com.hubery.dao.UserMapper;
 import com.hubery.entity.NewsCenter;
 import com.hubery.sevice.NewsCenterService;
 import org.springframework.beans.factory.annotation.Autowired;

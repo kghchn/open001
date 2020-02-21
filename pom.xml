@@ -54,11 +54,17 @@
             <version>3.4</version>
         </dependency>
 
+        <!--权限-->
+       <!-- <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>-->
+
         <!--Actuator 监控 -->
-        <dependency>
+       <!-- <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+        </dependency>-->
 
         <!-- 热部署模块 开始 -->
         <dependency>
