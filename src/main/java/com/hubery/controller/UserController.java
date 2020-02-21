@@ -21,16 +21,13 @@ import org.springframework.web.bind.annotation.*;
 @Api("请求方法")
 public class UserController {
 
+    private final UserService userService;
+    private final FilePathServiceImpl filePathServiceImpl;
     @Autowired
-    private UserService userService;
-    @Autowired
-    private  FilePathServiceImpl filePathServiceImpl;
-
-   /* @Autowired
-    public UserController(UserService userService, FilePathServiceImpl filePathServiceImpl) {
-        this.userService = userService;
-        this.filePathServiceImpl = filePathServiceImpl;
-    }*/
+    public UserController(UserService userService,FilePathServiceImpl filePathServiceImpl){
+        this.userService=userService;
+        this.filePathServiceImpl=filePathServiceImpl;
+    }
 
     @ResponseBody
     @PostMapping(value = "/login")
