@@ -1,5 +1,6 @@
 package com.hubery.controller;
 
+import com.hubery.common.RedisUtil;
 import com.hubery.common.ResultUtil;
 import com.hubery.entity.ResulMsg;
 import com.hubery.entity.User;
@@ -10,6 +11,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
+
 /**
  * @program hubery
  * @description: 用户管理
@@ -19,7 +22,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Api("请求方法")
+
 public class UserController {
+    @Resource
+    private RedisUtil redisUtil;
+
 
     private final UserService userService;
     private final FilePathServiceImpl filePathServiceImpl;
@@ -52,10 +59,16 @@ public class UserController {
     @GetMapping(value = "/test")
     /** @RequestMapping(value = "/test",method= RequestMethod.GET)*/
 //    @ApiOperation(value = "接口管理", httpMethod = "GET")
-    public ResulMsg test(String name) {
-//        sleep(2000);
-        String test = "Mapping : " + name;
-        User user = userService.selectByPrimaryKey(1L);
+    public ResulMsg test(Long id) {
+/*        System.out.println(System.getProperty("user.home"));
+        System.out.println(System.getProperty("java.version"));
+        System.out.println(System.getProperty("os.name"));
+//        System.out.println(System.getProperty("java.vendor.url"));*/
+//        System.out.println("test");
+//        boolean set = redisUtil.set("id_lisi", "lisi", 10);
+//        System.out.println(set);
+        String test = "Long : " + id;
+        User user = userService.selectByPrimaryKey(id);
         System.err.println(user);
         return ResultUtil.success("请求成功...",user);
         //SqlSessionFactory
