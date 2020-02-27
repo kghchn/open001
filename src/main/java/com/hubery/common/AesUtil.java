@@ -19,7 +19,7 @@ import java.security.SecureRandom;
  */
 public class AesUtil {
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         String content = "test"; // 加密的字符串
         String addPwd = "test"; // 加解密密钥
 
@@ -30,7 +30,7 @@ public class AesUtil {
         // 解密
         String userAccount = AesUtil.decrypt(encryptResultStr, addPwd);
         System.out.println("解密后content：" + userAccount);
-    }
+    }*/
 
 
     /**
