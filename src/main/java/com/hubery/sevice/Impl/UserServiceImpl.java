@@ -1,10 +1,14 @@
 package com.hubery.sevice.Impl;
 
-import org.springframework.stereotype.Service;
-import javax.annotation.Resource;
-import com.hubery.entity.User;
+import com.hubery.common.annotation.OperationLogDetail;
+import com.hubery.common.annotation.OperationType;
+import com.hubery.common.annotation.OperationUnit;
 import com.hubery.dao.UserMapper;
+import com.hubery.entity.User;
 import com.hubery.sevice.UserService;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -28,6 +32,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+//    @OperationLogDetail(detail = "通过userId查询用户信息:{{userId}}",level = 2,operationUnit = OperationUnit.USER,operationType = OperationType.SELECT)
+    @OperationLogDetail(detail = "{{userId}}",targetObjectId="目标Id:{{userId}}",level = 2,operationUnit = OperationUnit.USER,operationType = OperationType.SELECT)
     public User selectByPrimaryKey(Long userId) {
         return userMapper.selectByPrimaryKey(userId);
     }
