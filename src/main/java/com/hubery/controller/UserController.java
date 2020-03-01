@@ -69,7 +69,7 @@ public class UserController {
 //        System.out.println(set);
         String test = "Long : " + id;
         User user = userService.selectByPrimaryKey(id);
-        System.out.println(user);
+        System.out.println("用户:"+user);
         return ResultUtil.success("请求成功...",user);
         //SqlSessionFactory
     }

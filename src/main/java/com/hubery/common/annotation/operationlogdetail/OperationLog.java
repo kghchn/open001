@@ -1,4 +1,4 @@
-package com.hubery.common.annotation;
+package com.hubery.common.annotation.operationlogdetail;
 
 import lombok.Data;
 
@@ -21,7 +21,7 @@ public class OperationLog {
     /**
      * 目标对象Id
      */
-    private String targetObjectId;
+    private Long targetObjectId;
 
     /**
      * 被操作的对象

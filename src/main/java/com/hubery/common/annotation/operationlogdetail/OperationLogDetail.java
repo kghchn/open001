@@ -1,4 +1,4 @@
-package com.hubery.common.annotation;
+package com.hubery.common.annotation.operationlogdetail;
 
 import java.lang.annotation.*;
 
