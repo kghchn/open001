@@ -35,19 +35,32 @@ public class UserServiceImpl implements UserService {
         return userMapper.insertSelective(record);
     }
 
+    /**
+     *
+     * @param userId
+     * @return
+     */
     @Override
+    /*事务管理*/
     @Transactional
-//    @OperationLogDetail(detail = "通过userId查询用户信息:{{userId}}",level = 2,operationUnit = OperationUnit.USER,operationType = OperationType.SELECT)
     @OperationLogDetail(detail = "根据用户Id获取用户信息:{{userId}}",targetObjectId="{{userId}}",level = 2,operationUnit = OperationUnit.USER,operationType = OperationType.SELECT)
     public User selectByPrimaryKey(Long userId) {
-//        Integer i = 1/0 ;
+        /*Integer i = 1/0 ;*/
         return userMapper.selectByPrimaryKey(userId);
     }
 
+    /**
+     *
+     * @param record
+     * @return
+     */
     @Override
+    /*事务管理*/
     @Transactional
     public int updateByPrimaryKeySelective(User record) {
-        return userMapper.updateByPrimaryKeySelective(record);
+        int i = userMapper.updateByPrimaryKeySelective(record);
+        int num = 1 / 0;
+        return i;
     }
 
     @Override

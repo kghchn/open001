@@ -23,7 +23,7 @@ public class User {
     /**
      * 性别:0-保密,1-男,2-女
      */
-    private Boolean userSex;
+    private int userSex;
 
     /**
      * 身份证件类型：1中国大陆身份证，2护照

@@ -60,16 +60,19 @@ public class UserController {
     /** @RequestMapping(value = "/test",method= RequestMethod.GET)*/
 //    @ApiOperation(value = "接口管理", httpMethod = "GET")
     public ResulMsg test(Long id) {
-/*        System.out.println(System.getProperty("user.home"));
+        System.out.println(System.getProperty("user.home"));
         System.out.println(System.getProperty("java.version"));
         System.out.println(System.getProperty("os.name"));
-//        System.out.println(System.getProperty("java.vendor.url"));*/
+//        System.out.println(System.getProperty("java.vendor.url"));
 //        System.out.println("test");
 //        boolean set = redisUtil.set("id_lisi", "lisi", 10);
 //        System.out.println(set);
         String test = "Long : " + id;
         User user = userService.selectByPrimaryKey(id);
-        System.out.println("用户:"+user);
+//        System.out.println("用户修改之前:"+user);
+//        user.setUserEmail("test@hubery.com");
+//        int i = userService.updateByPrimaryKeySelective(user);
+//        System.out.println("修改条数"+"-----用户修改之后:"+user);
         return ResultUtil.success("请求成功...",user);
         //SqlSessionFactory
     }

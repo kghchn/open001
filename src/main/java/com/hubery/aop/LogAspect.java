@@ -41,6 +41,7 @@ public class LogAspect {
             try {
                 //方法执行完成后增加日志
                 addOperationLog(joinPoint,res,time);
+                System.err.println("res:"+res);
             }catch (Exception e){
                 System.err.println("LogAspect 操作失败：" + e.getMessage());
                 e.printStackTrace();
@@ -52,17 +53,16 @@ public class LogAspect {
         MethodSignature signature = (MethodSignature)joinPoint.getSignature();
         OperationLog operationLog = new OperationLog();
         operationLog.setRunTime(time);
-//        operationLog.setReturnValue(JSON.toJSONString(res));
+        operationLog.setReturnValue(JSON.toJSONString(res));
         operationLog.setId(UUID.randomUUID().toString());
         operationLog.setArgs(JSON.toJSONString(joinPoint.getArgs()));
         operationLog.setCreateTime(new Date());
         operationLog.setMethod(signature.getDeclaringTypeName() + "." + signature.getName());
-//        operationLog.setUserId("#{currentUserId}");
-//        operationLog.setUserName("#{currentUserName}");
+        /*operationLog.setUserId("#{currentUserId}");
+        operationLog.setUserName("#{currentUserName}");*/
         OperationLogDetail annotation = signature.getMethod().getAnnotation(OperationLogDetail.class);
         if(annotation != null){
             operationLog.setLevel(annotation.level());
-//            operationLog.setTargetObjectId(Long.valueOf(annotation.targetObjectId()));
             operationLog.setTargetObjectId(getTargetObjectId(((MethodSignature)joinPoint.getSignature()).getParameterNames(),joinPoint.getArgs(),annotation));
             operationLog.setDescribe(getDetail(((MethodSignature)joinPoint.getSignature()).getParameterNames(),joinPoint.getArgs(),annotation));
             operationLog.setOperationType(annotation.operationType().getValue());
@@ -70,7 +70,6 @@ public class LogAspect {
         }
         //TODO 这里保存日志
         System.err.println("记录日志:" + operationLog.toString());
-//        operationLogService.insert(operationLog); 目标对象id Target object id
     }
 
     /**
@@ -87,7 +86,7 @@ public class LogAspect {
         }
         String detail = annotation.detail();
         try {
-//            detail = "'" + "#{currentUserName}" + "'=》" + annotation.detail();
+            /*detail = "'" + "#{currentUserName}" + "'=》" + annotation.detail();*/
             detail = annotation.detail();
             for (Map.Entry<Object, Object> entry : map.entrySet()) {
                 Object k = entry.getKey();
@@ -114,7 +113,7 @@ public class LogAspect {
         }
         String targetObjectId = annotation.detail();
         try {
-//            targetObjectId = "'" + "#{currentUserName}" + "'=》" + annotation.detail();
+            /*targetObjectId = "'" + "#{currentUserName}" + "'=》" + annotation.detail();*/
             targetObjectId = annotation.targetObjectId();
             for (Map.Entry<Object, Object> entry : map.entrySet()) {
                 Object k = entry.getKey();
@@ -129,8 +128,7 @@ public class LogAspect {
 
     @Before("operationLog()")
     public void doBeforeAdvice(JoinPoint joinPoint){
-        System.out.println("进入方法前执行.....");
-
+        /*System.out.println("进入方法前执行.....");*/
     }
 
     /**
@@ -139,7 +137,7 @@ public class LogAspect {
      */
     @AfterReturning(returning = "ret", pointcut = "operationLog()")
     public void doAfterReturning(Object ret) {
-        System.out.println("方法的返回值 : " + ret);
+        /*System.out.println("方法的返回值 : " + ret);*/
     }
 
     /**
@@ -147,7 +145,7 @@ public class LogAspect {
      */
     @AfterThrowing("operationLog()")
     public void throwss(JoinPoint jp){
-        System.out.println("方法异常时执行.....");
+       /* System.out.println("方法异常时执行.....");*/
     }
 
 
@@ -156,7 +154,7 @@ public class LogAspect {
      */
     @After("operationLog()")
     public void after(JoinPoint jp){
-        System.out.println("方法最后执行.....");
+        /*System.out.println("方法最后执行.....");*/
     }
 
 }
