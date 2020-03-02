@@ -21,8 +21,7 @@ import javax.annotation.Resource;
  */
 
 @RestController
-@Api("请求方法")
-
+@Api(tags = "用户信息管理API")
 public class UserController {
     @Resource
     private RedisUtil redisUtil;
@@ -38,7 +37,8 @@ public class UserController {
 
     @ResponseBody
     @PostMapping(value = "/login")
-    @ApiOperation(value = "接口管理", httpMethod = "POST")
+//    @ApiOperation(value = "接口管理", httpMethod = "POST")
+    @ApiOperation("根据id获取用户信息")
     public ResulMsg login(@RequestBody String user) {
 //        User loginUser = userServiceImpl.login(user);
         String test = "PostMapping :" + user;
@@ -59,6 +59,7 @@ public class UserController {
     @GetMapping(value = "/test")
     /** @RequestMapping(value = "/test",method= RequestMethod.GET)*/
 //    @ApiOperation(value = "接口管理", httpMethod = "GET")
+    @ApiOperation("根据id获取用户信息")
     public ResulMsg test(Long id) {
         System.out.println(System.getProperty("user.home"));
         System.out.println(System.getProperty("java.version"));

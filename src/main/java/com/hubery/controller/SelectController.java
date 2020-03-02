@@ -1,7 +1,8 @@
 package com.hubery.controller;
 
-import com.hubery.entity.ResulMsg;
 import com.hubery.common.ResultUtil;
+import com.hubery.entity.ResulMsg;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/sel")
+@Api(tags = "查询管理API")
+
 public class SelectController {
 
     @ResponseBody

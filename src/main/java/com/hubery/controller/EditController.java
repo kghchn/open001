@@ -36,7 +36,7 @@ public class EditController {
 
     @ResponseBody
     @GetMapping(value = "/editNewsCenter", produces = {"application/json;charset=UTF-8"})
-    @ApiOperation(value = "接口管理", httpMethod = "GET")
+    @ApiOperation(value = "Test接口管理", httpMethod = "GET")
     public ResulMsg editNewsCenter() {
 //        NewsCenter newsCenter = new NewsCenter();
 //        newsCenter.setId(3);

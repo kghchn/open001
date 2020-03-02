@@ -1,11 +1,15 @@
 package com.hubery.controller;
 
-import com.hubery.entity.ResulMsg;
 import com.hubery.common.ResultUtil;
+import com.hubery.entity.ResulMsg;
+import io.swagger.annotations.Api;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -23,6 +27,7 @@ import java.util.Objects;
 
 @RestController
 @RequestMapping("/upload")
+@Api(tags = "文件管理API")
 public class UploadController {
 
     @Value("${uploadFile.path}")
