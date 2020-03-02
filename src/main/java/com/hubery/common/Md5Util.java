@@ -68,7 +68,7 @@ public class Md5Util {
         return k;
     }
 
-    public static void main(String[] args) {
-        System.out.println(Md5Util.MD5("password"));
-    }
+//    public static void main(String[] args) {
+//        System.out.println(Md5Util.MD5("password"));
+//    }
 }

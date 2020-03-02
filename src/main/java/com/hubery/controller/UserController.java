@@ -1,8 +1,8 @@
 package com.hubery.controller;
 
 import com.hubery.common.RedisUtil;
-import com.hubery.common.ResultUtil;
-import com.hubery.entity.ResulMsg;
+import com.hubery.common.swagger.ResultCode;
+import com.hubery.common.swagger.ResultMessage;
 import com.hubery.entity.User;
 import com.hubery.sevice.Impl.FilePathServiceImpl;
 import com.hubery.sevice.UserService;
@@ -39,7 +39,7 @@ public class UserController {
     @PostMapping(value = "/login")
 //    @ApiOperation(value = "接口管理", httpMethod = "POST")
     @ApiOperation("根据id获取用户信息")
-    public ResulMsg login(@RequestBody String user) {
+    public ResultMessage login(@RequestBody String user) {
 //        User loginUser = userServiceImpl.login(user);
         String test = "PostMapping :" + user;
         System.err.println(test);
@@ -52,7 +52,7 @@ public class UserController {
 //        filePath.setFileStatus(1);
         /* Integer integer = filePathService.addFilePath(filePath);*/
         /*System.err.println("integer:"+integer);*/
-        return ResultUtil.success("请求成功",user);
+        return ResultMessage.success(user);
     }
 
     @ResponseBody
@@ -60,7 +60,7 @@ public class UserController {
     /** @RequestMapping(value = "/test",method= RequestMethod.GET)*/
 //    @ApiOperation(value = "接口管理", httpMethod = "GET")
     @ApiOperation("根据id获取用户信息")
-    public ResulMsg test(Long id) {
+    public ResultMessage test(Long id) {
         System.out.println(System.getProperty("user.home"));
         System.out.println(System.getProperty("java.version"));
         System.out.println(System.getProperty("os.name"));
@@ -74,7 +74,12 @@ public class UserController {
 //        user.setUserEmail("test@hubery.com");
 //        int i = userService.updateByPrimaryKeySelective(user);
 //        System.out.println("修改条数"+"-----用户修改之后:"+user);
-        return ResultUtil.success("请求成功...",user);
+        if(user != null){
+            return ResultMessage.success(user);
+        }else {
+            return ResultMessage.failure(ResultCode.RESULE_DATA_NONE);
+        }
+
         //SqlSessionFactory
     }
 

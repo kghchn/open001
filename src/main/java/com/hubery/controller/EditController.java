@@ -1,7 +1,6 @@
 package com.hubery.controller;
 
-import com.hubery.common.ResultUtil;
-import com.hubery.entity.ResulMsg;
+import com.hubery.common.swagger.ResultMessage;
 import com.hubery.sevice.FilePathService;
 import com.hubery.sevice.NewsCenterService;
 import com.hubery.sevice.UserService;
@@ -37,7 +36,7 @@ public class EditController {
     @ResponseBody
     @GetMapping(value = "/editNewsCenter", produces = {"application/json;charset=UTF-8"})
     @ApiOperation(value = "Test接口管理", httpMethod = "GET")
-    public ResulMsg editNewsCenter() {
+    public ResultMessage editNewsCenter() {
 //        NewsCenter newsCenter = new NewsCenter();
 //        newsCenter.setId(3);
 //        newsCenter.setTitle("3标题修改");
@@ -47,7 +46,7 @@ public class EditController {
         /*Integer returnNewsCenter = newsCenterService.addNewsCenter(newsCenter);*/
 //        Integer integer = newsCenterService .updNewsCenter(newsCenter);
 //        System.err.println(integer.toString());
-        return ResultUtil.success("请求成功");
+        return ResultMessage.success("请求成功");
     }
 
 }
