@@ -6,6 +6,7 @@ import com.hubery.common.annotation.operationlogdetail.OperationUnit;
 import com.hubery.dao.UserMapper;
 import com.hubery.entity.User;
 import com.hubery.sevice.UserService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,8 +43,8 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    /*事务管理*/
     @Transactional
+    @Cacheable(cacheNames="user:id")
     @OperationLogDetail(detail = "根据用户Id获取用户信息:{{userId}}",targetObjectId="{{userId}}",level = 2,operationUnit = OperationUnit.USER,operationType = OperationType.SELECT)
     public User selectByPrimaryKey(Long userId) {
         /*Integer i = 1/0 ;*/

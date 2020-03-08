@@ -32,7 +32,9 @@ public class UploadController {
 
     @Value("${uploadFile.path}")
     private String uploadPath;
-    private Long uploadSizeMax = 1100000000L;
+    @Value("${uploadFile.uploadSizeMax}")
+    private Long uploadSizeMax ;
+
     private Logger logger = LoggerFactory.getLogger(UploadController.class);
 
     @ResponseBody
@@ -44,13 +46,12 @@ public class UploadController {
         /**logger.debug("传入的文件参数：{}", JSON.toJSONString(file, true));*/
 
         if (Objects.isNull(file) || file.isEmpty()) {
-            logger.error("上传文件为空");            return ResultMessage.failure(ResultCode.PARAM_IS_BLANK);
+            logger.info("上传文件为空");
+            return ResultMessage.failure(ResultCode.PARAM_IS_BLANK);
         }
-
         if (file.getSize() > uploadSizeMax) {
             return ResultMessage.failure(10001,"文件大于1.1G ");
         }
-
         try {
             byte[] bytes = file.getBytes();
             Path path = Paths.get(uploadPath + file.getOriginalFilename());
@@ -60,7 +61,7 @@ public class UploadController {
             }
             /*文件写入指定路径*/
             Files.write(path, bytes);
-            /** logger.debug("上传文件文件写入成功");*/
+            logger.info("上传文件文件写入成功");
             return ResultMessage.success("上传文件成功");
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,6 +1,8 @@
 package com.hubery.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @program hubery
@@ -10,6 +12,8 @@ import lombok.Data;
  */
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserOne {
     private Integer userId;
     private String userName;

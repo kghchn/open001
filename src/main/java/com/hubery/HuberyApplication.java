@@ -2,6 +2,7 @@ package com.hubery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 
 /**
  * @program hubery
@@ -11,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 //@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@EnableCaching
 @SpringBootApplication
 public class HuberyApplication {
     public static void main(String[] args) {

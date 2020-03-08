@@ -1,17 +1,16 @@
 package com.hubery.controller;
 
-import com.hubery.common.RedisUtil;
+import com.alibaba.fastjson.JSONObject;
 import com.hubery.common.swagger.ResultCode;
 import com.hubery.common.swagger.ResultMessage;
 import com.hubery.entity.User;
 import com.hubery.sevice.Impl.FilePathServiceImpl;
+import com.hubery.sevice.TokenService;
 import com.hubery.sevice.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
 
 /**
  * @program hubery
@@ -23,15 +22,14 @@ import javax.annotation.Resource;
 @RestController
 @Api(tags = "用户信息管理API")
 public class UserController {
-    @Resource
-    private RedisUtil redisUtil;
-
 
     private final UserService userService;
+    private final TokenService tokenService;
     private final FilePathServiceImpl filePathServiceImpl;
     @Autowired
-    public UserController(UserService userService,FilePathServiceImpl filePathServiceImpl){
+    public UserController(UserService userService,TokenService tokenService,FilePathServiceImpl filePathServiceImpl){
         this.userService=userService;
+        this.tokenService=tokenService;
         this.filePathServiceImpl=filePathServiceImpl;
     }
 
@@ -39,48 +37,40 @@ public class UserController {
     @PostMapping(value = "/login")
 //    @ApiOperation(value = "接口管理", httpMethod = "POST")
     @ApiOperation("根据id获取用户信息")
-    public ResultMessage login(@RequestBody String user) {
-//        User loginUser = userServiceImpl.login(user);
-        String test = "PostMapping :" + user;
-        System.err.println(test);
-        /** System.err.println(test);*/
+    public JSONObject login(@RequestBody User user) {
+        JSONObject jsonObject=new JSONObject();
+        User userForBase=userService.selectByPrimaryKey(user.getUserId());
+        if(userForBase==null){
+            jsonObject.put("message","登录失败,用户不存在");
+            return jsonObject;
+        }else {
+            if (!userForBase.getUserPassword().equals(user.getUserPassword())){
+                jsonObject.put("message","登录失败,密码错误");
+                return jsonObject;
+            }else {
+                String token = tokenService.getToken(userForBase);
+                jsonObject.put("token", token);
+                jsonObject.put("user", userForBase);
+                return jsonObject;
+            }
+        }
 
-        /** FilePath add  */
-//        FilePath filePath = new FilePath();
-//        filePath.setPath("/home/data/xy/2019/07/test.mp4");
-//        filePath.setFileType(2);
-//        filePath.setFileStatus(1);
-        /* Integer integer = filePathService.addFilePath(filePath);*/
-        /*System.err.println("integer:"+integer);*/
-        return ResultMessage.success(user);
     }
 
+//    @UserLoginToken
+    @ApiOperation("根据id获取用户信息")
     @ResponseBody
-    @GetMapping(value = "/test")
+    @RequestMapping(value = "/test",method= RequestMethod.GET)
     /** @RequestMapping(value = "/test",method= RequestMethod.GET)*/
 //    @ApiOperation(value = "接口管理", httpMethod = "GET")
-    @ApiOperation("根据id获取用户信息")
     public ResultMessage test(Long id) {
-        System.out.println(System.getProperty("user.home"));
-        System.out.println(System.getProperty("java.version"));
-        System.out.println(System.getProperty("os.name"));
-//        System.out.println(System.getProperty("java.vendor.url"));
-//        System.out.println("test");
-//        boolean set = redisUtil.set("id_lisi", "lisi", 10);
-//        System.out.println(set);
-        String test = "Long : " + id;
         User user = userService.selectByPrimaryKey(id);
-//        System.out.println("用户修改之前:"+user);
-//        user.setUserEmail("test@hubery.com");
-//        int i = userService.updateByPrimaryKeySelective(user);
-//        System.out.println("修改条数"+"-----用户修改之后:"+user);
         if(user != null){
             return ResultMessage.success(user);
         }else {
             return ResultMessage.failure(ResultCode.RESULE_DATA_NONE);
         }
 
-        //SqlSessionFactory
     }
 
 }
