@@ -24,7 +24,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object object) throws Exception {
         String token = httpServletRequest.getHeader("token");// 从 http 请求头中取出 token
         // 如果不是映射到方法直接通过
-        System.out.println("进入preHandle-gh");
+//        System.out.println("进入preHandle-gh");
         if (!(object instanceof HandlerMethod)) {
             return true;
         }
@@ -43,8 +43,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             if (userLoginToken.required()) {
                 // 执行认证
                 if (token == null) {
-                    return false;
-//                    throw new RuntimeException("无token，请重新登录");
+//                    return false;
+                    throw new RuntimeException("无token，请重新登录");
                 }
                 // 获取 token 中的 user id
                 String userId;
@@ -53,7 +53,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 } catch (JWTDecodeException j) {
                     throw new RuntimeException("401");
                 }
-                User user = userService.selectByPrimaryKey(Long.valueOf(userId));
+                User user = userService.selectUserByUseId(Long.valueOf(userId));
                 if (user == null) {
                     throw new RuntimeException("用户不存在，请重新登录");
                 }

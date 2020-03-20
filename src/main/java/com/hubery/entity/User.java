@@ -1,16 +1,23 @@
 package com.hubery.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
+/**
+ *
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class User implements Serializable {
+
+    private static final long serialVersionUID = -4272369295035209697L;
     /**
      * 自增主键，系统内的用户ID
      */
@@ -57,7 +64,8 @@ public class User implements Serializable {
     /**
      * 最后登录时间
      */
-    private Date lastLoginTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime lastLoginTime;
 
     /**
      * 用户状态， -1:删除,01:正常,02:冻结
@@ -67,10 +75,12 @@ public class User implements Serializable {
     /**
      * 记录生成的时间
      */
-    private Date createTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime createTime;
 
     /**
      * 记录最近修改的时间
      */
-    private Date updateTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime updateTime;
 }

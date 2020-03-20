@@ -9,11 +9,11 @@ import java.util.Date;
 
 /**
  * @program hubery
- * @description: 时间日期工具类
+ * @description: Date时间日期工具类
  * @author: kgh
  * @create: 2019/05/22 23:21
  */
-public class DateUtil {
+public class MyDateUtil {
     private final static SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy");
     private final static SimpleDateFormat sdfDay = new SimpleDateFormat("yyyy-MM-dd");
     private final static SimpleDateFormat sdfDays = new SimpleDateFormat("yyyyMMdd");
