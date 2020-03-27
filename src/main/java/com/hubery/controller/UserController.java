@@ -39,7 +39,7 @@ public class UserController {
     @ApiOperation("根据id获取用户信息")
     public JSONObject login(@RequestBody User user) {
         JSONObject jsonObject=new JSONObject();
-        User userForBase=userService.selectByPrimaryKey(user.getUserId());
+        User userForBase=userService.selectUserByUseId(user.getUserId());
         if(userForBase==null){
             jsonObject.put("message","登录失败,用户不存在");
             return jsonObject;
@@ -64,8 +64,9 @@ public class UserController {
     /** @RequestMapping(value = "/test",method= RequestMethod.GET)*/
 //    @ApiOperation(value = "接口管理", httpMethod = "GET")
     public ResultMessage test(Long id) {
-        User user = userService.selectByPrimaryKey(id);
+        User user = userService.selectUserByUseId(id);
         if(user != null){
+            System.out.println(user);
             return ResultMessage.success(user);
         }else {
             return ResultMessage.failure(ResultCode.RESULE_DATA_NONE);

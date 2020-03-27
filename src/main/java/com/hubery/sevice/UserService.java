@@ -11,7 +11,7 @@ public interface UserService {
 
     int insertSelective(User record);
 
-    User selectByPrimaryKey(Long userId);
+    User selectUserByUseId(Long userId);
 
     int updateByPrimaryKeySelective(User record);
 
