@@ -1,7 +1,7 @@
 package com.hubery.entity;
 
 /**
- * @program hubery
+ * @program Open
  * @description: 图片 视频 文件 路径
  * @author: kgh
  * @create: 2019/07/22 15:54
