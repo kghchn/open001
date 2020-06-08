@@ -17,6 +17,8 @@ public interface UserService {
 
     int updateByPrimaryKey(User record);
 
+    User selectByPrimaryKey(Long userId);
 }
+
 
 

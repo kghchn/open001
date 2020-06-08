@@ -37,21 +37,19 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
-     *
      * @param userId
      * @return
      */
     @Override
     @Transactional
 //    @Cacheable(cacheNames="user:id")
-    @OperationLogDetail(detail = "根据用户Id获取用户信息:{{userId}}",targetObjectId="{{userId}}",level = 2,operationUnit = OperationUnit.USER,operationType = OperationType.SELECT)
+    @OperationLogDetail(detail = "根据用户Id获取用户信息:{{userId}}", targetObjectId = "{{userId}}", level = 2, operationUnit = OperationUnit.USER, operationType = OperationType.SELECT)
     public User selectUserByUseId(Long userId) {
         /*Integer i = 1/0 ;*/
         return userMapper.selectByPrimaryKey(userId);
     }
 
     /**
-     *
      * @param record
      * @return
      */
@@ -70,6 +68,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.updateByPrimaryKey(record);
     }
 
+    @Override
+    public User selectByPrimaryKey(Long userId) {
+        return userMapper.selectByPrimaryKey(userId);
+    }
 }
+
 
 
