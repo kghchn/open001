@@ -3,9 +3,101 @@ server:
 #  address: 127.0.0.1
   tomcat:
     uri-encoding: UTF-8
-    min-spare-threads: 20
-    max-threads: 100
     connection-timeout: 5000
+
+# Spring 配置
+spring:
+  aop:
+    auto: true #启动aop配置
+  #权限拦截
+#  security:
+#    user:
+#      name: admin
+#      password: admin
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enable: true
+  mvc:
+    #静态资源spring.mvc.static-path-pattern: /static/**
+    static-path-pattern: /static/**
+  datasource:
+    name: hubery #hubery #数据库名称
+    type: com.alibaba.druid.pool.DruidDataSource
+    #druid相关配置
+    druid:
+      #监控统计拦截的filters
+      filters: stat
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      #基本属性
+      jdbc:mysql://127.0.0.1:3306/hubery?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      username: hubery #hubery
+      password: hubery #hubery
+      #配置初始化大小/最小/最大
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      #获取连接等待超时时间
+      max-wait: 60000
+      #间隔多久进行一次检测，检测需要关闭的空闲连接
+      time-between-eviction-runs-millis: 600000
+      #一个连接在池中最小生存的时间
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+  redis:
+    host: 39.106.210.109 #Redis服务器连接IP
+    port: 6379          #Redis服务器连接端口
+    password: xyfykgh  #Redis服务器连接密码（默认为空）
+    timeout: 30000      #连接超时
+    max-active: 100     #连接池最大阻塞等待时间（使用负值表示没有限制）
+    max-wait: 3000      #连接池中的最大空闲连接
+    max-idle: 20        #连接池中的最小空闲连接
+    min-idle: 0         #连接超时时间（毫秒）
+
+  #文件上传大小限制
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 5800000000  #单个文件的最大上限 5.8G
+      max-request-size: 6000000000 #单个请求的文件总大小上限 6G
+
+# 该配置节点为独立的节点，容易将这个配置放在spring的节点下，导致配置无法被识别
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.hubery.entity  # 注意：对应实体类的路径
+
+# 日志级别设置
+logging:
+    level:
+      com.hubery.dao: debug
+
+#pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  returnPageInfo: check
+
+#静态资源spring.mvc.static-path-pattern: /static/**
+
+#接口管理工具配置  http://localhost:8090/swagger-ui.html
+swagger:
+  enabled: true
+#  basic:
+#    username: hubery
+#    password: hubery
+
+uploadFile:
+  path: src/main/resources/static/file/
+  uploadSizeMax: 1100000000
 
 # http://192.168.0.60:8008/kkk/actuator/health
 #management:
@@ -26,83 +118,4 @@ server:
 #    url: localhost
 #    addr: China
 
-spring:
-  #权限拦截
-#  security:
-#    user:
-#      name: admin
-#      password: admin
-  http:
-    encoding:
-      force: true
-      charset: UTF-8
-      enable: true
-  mvc:
-    #静态资源spring.mvc.static-path-pattern=/static/**
-    static-path-pattern: /static/**
-  datasource:
-    name: hubery #hubery #数据库名称
-    type: com.alibaba.druid.pool.DruidDataSource
-    #druid相关配置
-    druid:
-      #监控统计拦截的filters
-      filters: stat
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      #基本属性
-      #jdbc:mysql://127.0.0.1:3306/hubery?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-      url: jdbc:mysql://localhost:3306/hubery?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=GMT%2B8
-      username: root #hubery
-      password:  #hubery
-      #配置初始化大小/最小/最大
-      initial-size: 1
-      min-idle: 1
-      max-active: 20
-      #获取连接等待超时时间
-      max-wait: 60000
-      #间隔多久进行一次检测，检测需要关闭的空闲连接
-      time-between-eviction-runs-millis: 600000
-      #一个连接在池中最小生存的时间
-      min-evictable-idle-time-millis: 300000
-      validation-query: SELECT 'x'
-      test-while-idle: true
-      test-on-borrow: false
-      test-on-return: false
-      #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
-      pool-prepared-statements: false
-      max-pool-prepared-statement-per-connection-size: 20
-
-  #文件上传大小限制
-  servlet:
-    multipart:
-      enabled: true
-      max-file-size: 5800000000  #单个文件的最大上限 5.8G
-      max-request-size: 6000000000 #单个请求的文件总大小上限 6G
-
-## 该配置节点为独立的节点，容易将这个配置放在spring的节点下，导致配置无法被识别
-mybatis:
-  mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
-  type-aliases-package: com.hubery.entity  # 注意：对应实体类的路径
-logging:
-    level:
-      com.hubery.dao: debug
-
-#pagehelper
-pagehelper:
-  helperDialect: mysql
-  reasonable: true
-  supportMethodsArguments: true
-  params: count=countSql
-  returnPageInfo: check
-
-#静态资源spring.mvc.static-path-pattern=/static/**
-
-#接口管理工具配置
-#swagger:
-#  basic:
-#    enable: true
-#    username: hubery
-#    password: hubery
-
-uploadFile:
-  path: src/main/resources/static/file/
 
